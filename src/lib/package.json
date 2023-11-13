@@ -20,8 +20,10 @@
   "keywords": [
     "binary",
     "ascii",
+    "binary2ascii",
+    "ascii2binary",
     "binascii",
-    "dkrm"
+    "dkrmstudio"
   ],
   "bugs": {
     "url": "https://github.com/dkrmstudio/binary-ascii/issues"
