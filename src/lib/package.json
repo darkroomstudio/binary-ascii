@@ -1,0 +1,9 @@
+{
+  "name": "@dkrm/binascii",
+  "version": "0.0.0",
+  "description": "Binary <-> ASCII",
+  "main": "./dist/binascii.js",
+  "scripts": {
+    "build": "tsc ./binascii.ts --outDir dist"
+  }
+}

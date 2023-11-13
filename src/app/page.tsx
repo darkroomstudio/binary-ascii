@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import binascii from '@/lib/binascii'
 
 const replaceAt = (str: string, repl: string, idx: number): string =>
   str.substring(0, idx) + repl + str.substring(idx + repl.length)
@@ -26,6 +27,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <section className="space-x-2 mb-6">{bitsToLight}</section>
       <section className="text-4xl">Decimal: {parseInt(bits, 2)}</section>
+      <section className="text-4xl">ASCII: {binascii(bits)}</section>
     </main>
   )
 }
