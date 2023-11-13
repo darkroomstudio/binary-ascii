@@ -4,8 +4,9 @@
   "description": "Binary <-> ASCII",
   "private": false,
   "main": "dist/binascii.js",
+  "types": "dist/binascii.d.ts",
   "scripts": {
-    "build": "tsc ./binascii.ts --outDir dist"
+    "build": "tsc ./binascii.ts --declaration --outDir dist"
   },
   "files": [
     "dist"
