@@ -2,6 +2,7 @@
   "name": "@dkrmstudio/binascii",
   "version": "0.0.0",
   "description": "Binary <-> ASCII",
+  "private": false,
   "main": "dist/binascii.js",
   "scripts": {
     "build": "tsc ./binascii.ts --outDir dist"
