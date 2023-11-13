@@ -1,6 +1,6 @@
 {
   "name": "@dkrmstudio/binascii",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Binary <-> ASCII",
   "private": false,
   "main": "dist/binascii.js",
