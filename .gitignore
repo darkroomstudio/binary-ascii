@@ -9,9 +9,10 @@
 # testing
 /coverage
 
-# next.js
+# output
 /.next/
 /out/
+dist/
 
 # production
 /build

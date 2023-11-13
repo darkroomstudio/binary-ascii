@@ -1,44 +1,33 @@
-import Link from 'next/link'
+'use client'
+import { useState } from 'react'
+import binascii from '@/lib/binascii'
 
 const replaceAt = (str: string, repl: string, idx: number): string =>
   str.substring(0, idx) + repl + str.substring(idx + repl.length)
 
-export default function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string }
-}) {
-  const { bits } = searchParams
+export default function Home() {
+  const [bits, setBits] = useState('00000000')
 
-  const LightBulbOn = ({ idx }: { idx: number }) => (
-    <Link href={`?bits=${replaceAt(bits, '0', idx)}`} className="text-6xl">
-      🌝
-    </Link>
-  )
-  const LightBulbOff = ({ idx }: { idx: number }) => (
-    <Link href={`?bits=${replaceAt(bits, '1', idx)}`} className="text-6xl">
-      🌚
-    </Link>
+  const toggleLight = (idx: number, curBit: string) => {
+    const toBit = curBit === '1' ? '0' : curBit === '0' ? '1' : 'x'
+    setBits(replaceAt(bits, toBit, idx))
+  }
+
+  const LightBulb = ({ idx, curBit }: { idx: number; curBit: string }) => (
+    <button onClick={() => toggleLight(idx, curBit)} className="text-6xl">
+      {curBit === '1' ? '🌝' : curBit === '0' ? '🌚' : '🙅🏻‍♂️'}
+    </button>
   )
 
-  const bitsToLightBulb = bits?.split('').map((bit, idx) =>
-    idx >= 8 ? (
-      <></>
-    ) : bit === '1' ? (
-      <LightBulbOn key={idx} idx={idx} />
-    ) : bit === '0' ? (
-      <LightBulbOff key={idx} idx={idx} />
-    ) : (
-      <span key={idx} className="text-6xl">
-        🙅🏻‍♂️
-      </span>
-    )
-  )
+  const bitsToLight = bits
+    ?.split('')
+    .map((bit, idx) => <LightBulb idx={idx} curBit={bit} key={idx} />)
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <section className="space-x-2 mb-6">{bitsToLightBulb}</section>
+      <section className="space-x-2 mb-6">{bitsToLight}</section>
       <section className="text-4xl">Decimal: {parseInt(bits, 2)}</section>
+      <section className="text-4xl">ASCII: {binascii(bits)}</section>
     </main>
   )
 }
