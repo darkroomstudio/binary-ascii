@@ -7,34 +7,22 @@ const replaceAt = (str: string, repl: string, idx: number): string =>
 export default function Home() {
   const [bits, setBits] = useState('00000000')
 
-  const toggleLight = (idx: number) => {
-    setBits(replaceAt(bits, '0', idx))
+  const toggleLight = (idx: number, curBit: string) => {
+    const toBit = curBit === '1' ? '0' : curBit === '0' ? '1' : '🙅🏻‍♂️'
+    setBits(replaceAt(bits, toBit, idx))
   }
 
-  const LightOn = ({ idx }: { idx: number }) => (
-    <button onClick={() => toggleLight(idx)} className="text-6xl">
-      🌝
-    </button>
-  )
-  const LightOff = ({ idx }: { idx: number }) => (
-    <button onClick={() => toggleLight(idx)} className="text-6xl">
-      🌚
+  const LightBulb = ({ idx, curBit }: { idx: number; curBit: string }) => (
+    <button onClick={() => toggleLight(idx, curBit)} className="text-6xl">
+      {curBit === '1' ? '🌝' : curBit === '0' ? '🌚' : '🙅🏻‍♂️'}
     </button>
   )
 
-  const bitsToLight = bits?.split('').map((bit, idx) =>
-    idx >= 8 ? (
-      <></>
-    ) : bit === '1' ? (
-      <LightOn key={idx} idx={idx} />
-    ) : bit === '0' ? (
-      <LightOff key={idx} idx={idx} />
-    ) : (
-      <span key={idx} className="text-6xl">
-        🙅🏻‍♂️
-      </span>
+  const bitsToLight = bits
+    ?.split('')
+    .map((bit, idx) =>
+      idx < 8 ? <LightBulb idx={idx} curBit={bit} key={idx} /> : <></>
     )
-  )
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
