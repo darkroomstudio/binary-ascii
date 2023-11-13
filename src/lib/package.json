@@ -10,12 +10,19 @@
     "dist"
   ],
   "author": "devjiwonchoi",
-  "repository": "https://github.com/dkrmstudio/binary-ascii.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dkrmstudio/binary-ascii.git"
+  },
   "license": "MIT",
   "keywords": [
     "binary",
     "ascii",
     "binascii",
     "dkrm"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/dkrmstudio/binary-ascii/issues"
+  },
+  "homepage": "https://github.com/dkrmstudio/binary-ascii/tree/main/src/lib#readme"
 }
