@@ -8,7 +8,7 @@ export default function Home() {
   const [bits, setBits] = useState('00000000')
 
   const toggleLight = (idx: number, curBit: string) => {
-    const toBit = curBit === '1' ? '0' : curBit === '0' ? '1' : '🙅🏻‍♂️'
+    const toBit = curBit === '1' ? '0' : curBit === '0' ? '1' : 'x'
     setBits(replaceAt(bits, toBit, idx))
   }
 
@@ -20,9 +20,7 @@ export default function Home() {
 
   const bitsToLight = bits
     ?.split('')
-    .map((bit, idx) =>
-      idx < 8 ? <LightBulb idx={idx} curBit={bit} key={idx} /> : <></>
-    )
+    .map((bit, idx) => <LightBulb idx={idx} curBit={bit} key={idx} />)
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
