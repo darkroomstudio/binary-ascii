@@ -1,16 +1,37 @@
 import binascii from '../src/lib/binascii'
 
-describe('binascii', () => {
-  it('should convert binary to ascii', () => {
-    const binary = '0110100001100101011011000110110001101111'
-    const ascii = 'hello'
-    expect(binascii(binary)).toBe(ascii)
-  })
+const possibleTestCases = [
+  {
+    name: 'all lowercase',
+    ascii: 'abcde',
+    binary: '0110000101100010011000110110010001100101',
+  },
+  {
+    name: 'all uppercase',
+    ascii: 'ABCDE',
+    binary: '0100000101000010010000110100010001000101',
+  },
+  {
+    name: 'all numbers',
+    ascii: '01234',
+    binary: '0011000000110001001100100011001100110100',
+  },
+  {
+    name: 'all symbols',
+    ascii: '!@#$%',
+    binary: '0010000101000000001000110010010000100101',
+  },
+]
 
-  it('should convert ascii to binary', () => {
-    const binary = '0110100001100101011011000110110001101111'
-    const ascii = 'hello'
-    expect(binascii(ascii)).toBe(binary)
+describe('binascii', () => {
+  possibleTestCases.forEach(({ binary, ascii, name }) => {
+    it(`${name} - should convert ascii to binary`, () => {
+      expect(binascii(ascii)).toBe(binary)
+    })
+
+    it(`${name} - should convert binary to ascii`, () => {
+      expect(binascii(binary)).toBe(ascii)
+    })
   })
 
   it('should throw error if input is neither binary nor ascii', () => {
