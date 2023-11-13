@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import binascii from '@/lib/binascii'
+import binascii from '@dkrmstudio/binascii'
 
 const replaceAt = (str: string, repl: string, idx: number): string =>
   str.substring(0, idx) + repl + str.substring(idx + repl.length)
@@ -20,7 +20,7 @@ export default function Home() {
   )
 
   const bitsToLight = bits
-    ?.split('')
+    .split('')
     .map((bit, idx) => <LightBulb idx={idx} curBit={bit} key={idx} />)
 
   return (
