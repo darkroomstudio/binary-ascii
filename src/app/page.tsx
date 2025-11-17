@@ -14,7 +14,7 @@ export default function Home() {
   }
 
   const LightBulb = ({ idx, curBit }: { idx: number; curBit: string }) => (
-    <button onClick={() => toggleLight(idx, curBit)} className="text-6xl">
+    <button onClick={() => toggleLight(idx, curBit)} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
       {curBit === '1' ? '🌝' : curBit === '0' ? '🌚' : '🙅🏻‍♂️'}
     </button>
   )
