@@ -24,10 +24,10 @@ export default function Home() {
     .map((bit, idx) => <LightBulb idx={idx} curBit={bit} key={idx} />)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <section className="space-x-2 mb-6">{bitsToLight}</section>
-      <section className="text-4xl">Decimal: {parseInt(bits, 2)}</section>
-      <section className="text-4xl">ASCII: {binascii(bits)}</section>
+    <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-12 md:p-24">
+      <section className="flex flex-nowrap gap-1 sm:gap-2 mb-6 overflow-x-auto">{bitsToLight}</section>
+      <section className="text-2xl sm:text-3xl md:text-4xl">Decimal: {parseInt(bits, 2)}</section>
+      <section className="text-2xl sm:text-3xl md:text-4xl">ASCII: {binascii(bits)}</section>
     </main>
   )
 }
